@@ -52,10 +52,11 @@ app.delete('/delete/:id', async( req: Request, res: Response ) => {
 const openDb = (): Pool => {
     const pool: Pool = new Pool({
         user: process.env.DATABASE_USERNAME,
-        host: 'localhost',
-        database: 'todo',
+        host: process.env.DATABASE_HOST,
+        database: process.env.DATABASE_NAME,
         password: process.env.DATABASE_PASSWORD,
-        port: 5432
+        port: 5432,
+        ssl: true
     })
     return pool
 }

@@ -54,10 +54,11 @@ app.delete('/delete/:id', (req, res) => __awaiter(void 0, void 0, void 0, functi
 const openDb = () => {
     const pool = new pg_1.Pool({
         user: process.env.DATABASE_USERNAME,
-        host: 'localhost',
-        database: 'todo',
+        host: process.env.DATABASE_HOST,
+        database: process.env.DATABASE_NAME,
         password: process.env.DATABASE_PASSWORD,
-        port: 5432
+        port: 5432,
+        ssl: true
     });
     return pool;
 };
