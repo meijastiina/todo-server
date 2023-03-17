@@ -3,7 +3,6 @@ import cors from 'cors'
 import { Pool, QueryResult } from 'pg'
 require('dotenv').config()
 
-
 const app: Express = express()
 app.use(cors())
 app.use(express.json())
@@ -56,7 +55,7 @@ const openDb = (): Pool => {
         database: process.env.DATABASE_NAME,
         password: process.env.DATABASE_PASSWORD,
         port: 5432,
-        ssl: true
+        ssl: process.env.NODE_ENV === 'production' ? true : false,
     })
     return pool
 }

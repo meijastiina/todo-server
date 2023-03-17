@@ -58,7 +58,7 @@ const openDb = () => {
         database: process.env.DATABASE_NAME,
         password: process.env.DATABASE_PASSWORD,
         port: 5432,
-        ssl: true
+        ssl: process.env.NODE_ENV === 'production' ? true : false,
     });
     return pool;
 };
